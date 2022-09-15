@@ -1,0 +1,28 @@
+﻿@model Blog
+@{
+    var loggedUser = ViewData["user"] as Author;
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h3>Blog Güncelleme Sayfası</h3>
+
+<form method="post" class="form-group">
+	<label class="form-label" asp-for="BlogTitle">Başlık</label>
+	<input type="text" class="form-control" asp-for="BlogTitle" />
+	<br />
+	<label asp-for="@Model.CategoryID" class="control-label">Kategori</label>
+	<select asp-for="@Model.CategoryID" class="form-control" asp-items="@(new SelectList(ViewBag.CategoryList,"CategoryID","CategoryName"))"></select>
+	<br />
+	<label class="form-label" asp-for="BlogImage">Resim</label>
+	<input type="text" class="form-control" asp-for="BlogImage" />
+	<br />
+	<label class="form-label" asp-for="BlogDate">Tarih</label>
+	<input type="datetime-local" class="form-control" asp-for="BlogDate" />
+	<br />
+	<label class="form-label" asp-for="BlogContent">İçerik</label>
+	<textarea class="form-control" asp-for="BlogContent" rows="10" cols="20"></textarea>
+	<br />
+	<input type="hidden" class="form-control" asp-for="AuthorID" value="@ViewBag.AuthorID" />
+	<input type="hidden" class="form-control" asp-for="BlogID"/>
+	<input type="submit" asp-action="UpdateBlog" asp-controller="User" value="Güncelle" class="btn btn-success">
+</form>

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlogPro.MAP\BlogPro.MAP.csproj" />
+    <ProjectReference Include="..\BlogPro.MODEL\BlogPro.MODEL.csproj" />
+  </ItemGroup>
+
+</Project>

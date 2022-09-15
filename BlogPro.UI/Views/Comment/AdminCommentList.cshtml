@@ -1,0 +1,39 @@
+﻿@model List<Comment>
+@{
+	ViewData["Title"] = "AdminCommentList";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Onaylanan Yorumlar</h3>
+
+<html>
+<body class="hold-transition sidebar-mini">
+	<!-- Main content -->
+	<section class="content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="card-body">
+					<!-- Post -->
+					@foreach (Comment item in Model)
+					{
+						<div class="post">
+							<div class="user-block">
+								<img class="img-circle img-bordered-sm" src="/images/profilphoto.png" alt="user image">
+								<span class="username">
+									<a href="#">@item.UserName  -  @item.Blog.BlogTitle</a>
+								</span>
+								<span class="description">@item.CommentDate.ToString("dd/MM/yyyy - HH:MM")</span>
+							</div>
+							<!-- /.user-block -->
+							<p>@item.CommentText</p>
+							<p>
+								<a asp-action="DeleteBlogComments" asp-controller="Comment" asp-route-id="@item.CommentID" class="btn btn-danger"><i class="bi bi-trash"></i> Yorumu Kaldır</a>
+							</p>
+						</div>
+					}
+				</div>
+			</div>
+		</div><!-- /.card-body -->
+	</section>
+</body>
+</html>

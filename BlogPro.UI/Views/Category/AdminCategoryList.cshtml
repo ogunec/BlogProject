@@ -1,0 +1,178 @@
+﻿@model List<Category>
+@{
+	ViewData["Title"] = "AdminCategoryList";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{
+	string color = "";
+}
+@{
+	var category1 = ViewData["lastBlog1"] as Blog;
+	var category2 = ViewData["lastBlog2"] as Blog;
+	var category3 = ViewData["lastBlog3"] as Blog;
+	var category4 = ViewData["lastBlog4"] as Blog;
+	var category5 = ViewData["lastBlog5"] as Blog;
+}
+<html>
+<body class="hold-transition sidebar-mini">
+	<!-- Main content -->
+	<section class="content">
+		<!-- Default box -->
+		<div class="card">
+			<div class="card-header">
+				<h3 class="card-title">Kategori Listesi</h3>
+				<div class="card-tools">
+					<button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+						<i class="fas fa-minus"></i>
+					</button>
+					<button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+						<i class="fas fa-times"></i>
+					</button>
+				</div>
+			</div>
+			<div class="card-body p-0">
+				<table class="table table-striped projects">
+					<thead>
+						<tr>
+							<th style="width: 1%">
+								ID
+							</th>
+							<th style="width: 20%">
+								Kategori Adı
+							</th>
+							<th style="width: 10%">
+								Son Yazar
+							</th>
+							<th style="width: 40%">
+								Son Blog
+							</th>
+							<th style="width: 8%" class="text-center">
+								Durum
+							</th>
+							<th style="width: 30%">
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (Category item in Model)
+						{
+							if (item.Status == true)
+							{
+								color = "badge badge-success";
+							}
+							if (item.Status == false)
+							{
+								color = "badge badge-warning";
+							}
+							<tr>
+								<td>@item.CategoryID</td>
+								<td>
+									<a>
+										@item.CategoryName
+									</a>
+								</td>
+								<td>
+									@if (item.CategoryID == 1)
+									{
+										<img alt="Avatar" class="table-avatar" src="@category1.Author.AuthorImage">
+									}	
+									@if (item.CategoryID == 2)
+									{
+										<img alt="Avatar" class="table-avatar" src="@category2.Author.AuthorImage">
+									}
+									@if (item.CategoryID == 3)
+									{
+										<img alt="Avatar" class="table-avatar" src="@category3.Author.AuthorImage">
+									}
+									@if (item.CategoryID == 4)
+									{
+										<img alt="Avatar" class="table-avatar" src="@category4.Author.AuthorImage">
+									}
+									@if (item.CategoryID == 5)
+									{
+										<img alt="Avatar" class="table-avatar" src="@category5.Author.AuthorImage">
+									}
+								</td>
+								<td>
+									@if (item.CategoryID == 1)
+									{
+										@category1.BlogTitle
+									}
+									@if (item.CategoryID == 2)
+									{
+										@category2.BlogTitle
+									}
+									@if (item.CategoryID == 3)
+									{
+										@category3.BlogTitle
+									}
+									@if (item.CategoryID == 4)
+									{
+										@category4.BlogTitle
+									}
+									@if (item.CategoryID == 5)
+									{
+										@category5.BlogTitle
+									}
+								</td>
+								<td class="project-state">
+									<span class="@color">@item.Status</span>
+								</td>
+								<td class="project-actions text-right">
+									<a class="btn btn-primary btn-sm" asp-action="BlogByCategory" asp-controller="Category" asp-route-id="@item.CategoryID">
+										<i class="fas fa-folder">
+										</i>
+										Görüntüle
+									</a>
+									<a class="btn btn-info btn-sm" asp-action="EditCategory" asp-controller="Category" asp-route-id="@item.CategoryID">
+										<i class="fas fa-pencil-alt"></i>
+										Düzenle
+									</a>
+									@if (item.Status == true)
+									{
+										<a class="btn btn-danger btn-sm" asp-action="DeleteCategory" asp-controller="Category" asp-route-id="@item.CategoryID">
+											<i class="fas fa-trash">
+											</i>
+											Kaldır
+										</a>
+									}
+									@if (item.Status == false)
+									{
+										<a class="btn btn-success btn-sm" asp-action="ConfirmCategory" asp-controller="Category" asp-route-id="@item.CategoryID">
+											<i class="bi bi-check-circle-fill">
+											</i>
+											Onayla
+										</a>
+									}
+
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+			<!-- /.card-body -->
+		</div>
+		<!-- /.card -->
+	</section>
+	<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Kategori Ekle</button>
+	<div class="modal" id="Modal1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">Kategori Ekleme Paneli</h3>
+
+				</div>
+				<form method="post">
+					<div class="modal-body">
+						<label>Kategori Adı</label>
+						<input type="text" name="CategoryName" class="form-control" />
+						<br />
+						<button type="submit" asp-action="AddCategory" asp-controller="Category" class="btn btn-info">Ekle</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

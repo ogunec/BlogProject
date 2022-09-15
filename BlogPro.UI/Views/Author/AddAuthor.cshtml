@@ -1,0 +1,47 @@
+﻿@model Author
+@{
+    ViewData["Title"] = "AddAuthor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Yeni Yazar Ekleme Sayfası</h3>
+
+<form method="post" class="form-group">
+	<label class="form-label" asp-for="AuthorName">Yazar Adı</label>
+	<input type="text" class="form-control" asp-for="AuthorName" />
+	<span asp-validation-for="AuthorName" class="text-danger"></span>
+	<br />
+	<label class="form-label" asp-for="AuthorImage">Resim</label>
+	<input type="text" class="form-control" asp-for="AuthorImage" />
+	<span asp-validation-for="AuthorImage" class="text-danger"></span>
+	<br />
+	<label class="form-label" asp-for="AuthorDetail">Yazar Hakkında</label>
+	<input type="text" class="form-control" asp-for="AuthorDetail" />
+	<span asp-validation-for="AuthorDetail" class="text-danger"></span>
+	<br />
+	<label class="form-label" asp-for="AboutShort">İlgi Alanları</label>
+	<input type="text" class="form-control" asp-for="AboutShort" />
+	<span asp-validation-for="AboutShort" class="text-danger"></span>
+	<br />
+	<label class="form-label" asp-for="AuthorMail">Mail</label>
+	<input type="email" class="form-control" asp-for="AuthorMail" />
+	<span asp-validation-for="AuthorMail" class="text-danger"></span>
+	<br />
+	<label class="form-label" asp-for="AuthorTitle">Görev</label>
+	<input type="text" class="form-control" asp-for="AuthorTitle" />
+	<span asp-validation-for="AuthorTitle" class="text-danger"></span>
+	<br />
+	<label class="form-label" asp-for="Password">Şifre</label>
+	<input type="password" class="form-control" asp-for="Password" />
+	<span asp-validation-for="Password" class="text-danger"></span>
+	<br />
+	<label class="form-label" asp-for="Role">Rol</label>
+	<input type="text" class="form-control" asp-for="Role"/>
+	<span asp-validation-for="Role" class="text-danger"></span>
+	<br />
+	<label class="form-label" asp-for="PhoneNumber">Telefon</label>
+	<input type="text" class="form-control" asp-for="PhoneNumber" />
+	<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+	<br />
+	<input type="submit" asp-action="AddAuthor" asp-controller="Author" value="Kaydet" class="btn btn-info">
+</form>

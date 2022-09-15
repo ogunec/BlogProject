@@ -1,0 +1,18 @@
+﻿
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using BlogPro.MODEL.Entities
+@model (IEnumerable<Blog>,Post)
+<div>
+	<partial name="~/Views/Blog/FeaturedPost.cshtml" model="@Model.Item2" />
+</div>
+
+<div>
+	<partial name="~/Views/Blog/RecentPost.cshtml" model="@Model.Item1" />
+</div>
+@Html.PagedListPager((IPagedList)Model.Item1,page=> Url.Action("Index","Blog", new {page}))
+
+<div>
+	<partial name="~/Views/SubscribeMail/AddMail.cshtml" />
+</div>
+

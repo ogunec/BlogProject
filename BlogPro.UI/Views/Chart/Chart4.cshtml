@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "Chart4";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<html lang="tr">
+<head>
+	<title>Result Visualization</title>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$.ajax({
+				type: "POST",
+				dataType: "json",
+				contentType: "application/json",
+				url: '@Url.Action("VisualizeAuthorResult", "Chart")',
+				success: function(result) {
+					google.charts.load('current', {
+						'packages': ['corechart']
+					});
+					google.charts.setOnLoadCallback(function() {
+						drawChart(result);
+					});
+				}
+			});
+		});
+		function drawChart(result) {
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Name');
+			data.addColumn('number', 'Blog Sayısı');
+			var dataArray = [];
+			$.each(result, function(i, obj) {
+				dataArray.push([obj.authorName, obj.blogCount]);
+			});
+			data.addRows(dataArray);
+			var columnChartOptions = {
+				title: "Yazar - Blog Grafiği",
+				width: 1000,
+				height: 400,
+				bar: { groupWidth: "20%" },
+			};
+			var columnChart = new google.visualization.ColumnChart(document
+				.getElementById('PieChart_div'));
+			columnChart.draw(data, columnChartOptions);
+		}
+	</script>
+</head>
+<body>
+	<div id="PieChart_div"></div>
+</body>
+</html>
+
+

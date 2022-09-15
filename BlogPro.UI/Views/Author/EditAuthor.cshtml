@@ -1,0 +1,39 @@
+﻿@model Author
+@{
+    ViewData["Title"] = "EditAuthor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Yazar Güncelleme Sayfası</h3>
+
+<form method="post" class="form-group">
+	<label class="form-label" asp-for="AuthorName">Yazar Adı</label>
+	<input type="text" class="form-control" asp-for="AuthorName" />
+	<br />
+	<label class="form-label" asp-for="AuthorImage">Resim</label>
+	<input type="text" class="form-control" asp-for="AuthorImage" />
+	<br />
+	<label class="form-label" asp-for="AuthorDetail">Yazar Hakkında</label>
+	<input type="text" class="form-control" asp-for="AuthorDetail" />
+	<br />
+	<label class="form-label" asp-for="AboutShort">İlgi Alanları</label>
+	<input type="text" class="form-control" asp-for="AboutShort" />
+	<br />
+	<label class="form-label" asp-for="AuthorMail">Mail</label>
+	<input type="email" class="form-control" asp-for="AuthorMail" />
+	<br />
+	<label class="form-label" asp-for="AuthorTitle">Görev</label>
+	<input type="text" class="form-control" asp-for="AuthorTitle" />
+	<br />
+	<label class="form-label" asp-for="Password">Şifre</label>
+	<input type="password" class="form-control" asp-for="Password" />
+	<br />
+	<label class="form-label" asp-for="Role">Rol</label>
+	<input type="text" class="form-control" asp-for="Role"/>
+	<br />
+	<label class="form-label" asp-for="PhoneNumber">Telefon</label>
+	<input type="text" class="form-control" asp-for="PhoneNumber" />
+	<input type="hidden" asp-for="AuthorID"/>
+	<br />
+	<input type="submit" asp-action="EditAuthor" asp-controller="Author" value="Güncelle" class="btn btn-info">
+</form>

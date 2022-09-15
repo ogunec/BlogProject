@@ -1,0 +1,40 @@
+﻿@using BlogPro.MODEL.Entities
+@using System.Collections.Generic
+@model (List<Blog>, List<Comment>, int, List<Blog>, Post)
+<div>
+	<partial name="~/Views/Blog/BlogCover.cshtml" model="@Model.Item1" />
+</div>
+<section class="site-section py-lg">
+	<div class="container">
+
+		<div class="row blog-entries element-animate">
+
+			<div class="col-md-12 col-lg-8 main-content">
+				<div>
+					<partial name="~/Views/Blog/BlogContent.cshtml" model="@Model.Item1" />
+				</div>
+
+				<div>
+					<partial name="~/Views/Comment/CommentList.cshtml" model="@Model.Item2" />
+				</div>
+
+				<div>
+					<partial name="~/Views/Comment/LeaveComment.cshtml" model="@Model.Item3" />
+				</div>
+			</div>
+			<div class="col-md-12 col-lg-4 sidebar">
+				<partial name="~/Views/Author/AuthorAbout.cshtml" model="@Model.Item1"/>
+
+				<partial name="~/Views/Author/AuthorPopularPost.cshtml" model="@Model.Item4" />
+
+				<partial name="~/Views/Category/BlogDetailsCategoryList.cshtml" model="@Model.Item5"/>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<div>
+	<partial name="~/Views/SubscribeMail/AddMail.cshtml" />
+</div>
+

@@ -1,0 +1,53 @@
+﻿@model List<Comment>
+@{
+	ViewData["Title"] = "GetCommentsByBlog";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Blog Yorumları</h3>
+
+<html>
+<body class="hold-transition sidebar-mini">
+	<!-- Site wrapper -->
+	<div class="wrapper">
+		<section class="content">
+			<div class="container-fluid">
+				<!-- Timelime example  -->
+				<div class="row">
+					<div class="col-md-12">
+						<!-- The time line -->
+						<div class="timeline">
+							@foreach (Comment item in Model)
+							{
+								<!-- timeline time label -->
+								<div class="time-label">
+									<span class="bg-green">@item.CommentDate.ToShortDateString()</span>
+								</div>
+								<!-- /.timeline-label -->
+								<!-- timeline item -->
+								<div>
+									<i class="fas fa-comment bg-yellow"></i>
+									<div class="timeline-item">
+										<h3 class="timeline-header"><a href="#">@item.UserName</a>yorum yaptı</h3>
+										<div class="timeline-body">
+											@item.CommentText
+										</div>
+										<div class="timeline-footer">
+											<a asp-action="DeleteComment" asp-controller="Comment" asp-route-id="@item.CommentID" asp-route-blogid="@item.BlogID" class="btn btn-danger btn-sm">Sil</a>
+										</div>
+									</div>
+								</div>
+							}
+							<!-- END timeline item -->
+						</div>
+					</div>
+					<!-- /.col -->
+				</div>
+			</div>
+			<!-- /.timeline -->
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- ./wrapper -->
+</body>
+</html>

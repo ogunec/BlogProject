@@ -1,0 +1,25 @@
+﻿@using BlogPro.MODEL.Entities
+@using System.Collections.Generic
+@model List<Comment>
+<div class="pt-5">
+	<h3 class="mb-5">Yorumlar</h3>
+	@foreach (var item in (List<Comment>)Model)
+	{
+		<ul class="comment-list">
+		<li class="comment">
+			<div class="vcard">
+				<img src="/images/profilphoto.png" alt="Image placeholder">
+			</div>
+			<div class="comment-body">
+				<h3>@item.UserName</h3>
+				<div class="meta">@item.CommentDate.ToString("dd.MM.yyyy HH:mm")</div>
+				<p>@item.CommentText</p>
+			</div>
+		</li>
+	</ul>
+	<!-- END comment-list -->
+	}
+	
+</div>
+
+

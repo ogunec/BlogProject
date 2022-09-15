@@ -1,0 +1,14 @@
+﻿@using BlogPro.MODEL.Entities
+@using System.Collections.Generic
+@model List<Blog>
+<div class="sidebar-box">
+	<div class="bio text-center">
+		<img src="@Model.FirstOrDefault().Author.AuthorImage" alt="Image Placeholder" class="img-fluid mb-5">
+		<div class="bio-body">
+			<h2>@Model.FirstOrDefault().Author.AuthorName</h2>
+			<p class="mb-4">@Model.FirstOrDefault().Author.AuthorDetail</p>
+			<p><a href="#" class="btn btn-primary btn-sm rounded px-4 py-2">Yazılarım</a></p>
+		</div>
+	</div>
+</div>
+

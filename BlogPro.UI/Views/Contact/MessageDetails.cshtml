@@ -1,0 +1,101 @@
+﻿@model Contact
+@{
+	ViewData["Title"] = "MessageDetails";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<html>
+<body class="hold-transition sidebar-mini">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-2">
+				<div class="col-sm-6">
+					<h1>Mesaj Detayları</h1>
+				</div>
+			</div>
+		</div><!-- /.container-fluid -->
+	</section>
+	<!-- Main content -->
+	<section class="content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3">
+					<a asp-action="MailBox" asp-controller="Contact" class="btn btn-primary btn-block mb-3">Gelen Mesajlar</a>
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Klasörler</h3>
+							<div class="card-tools">
+								<button type="button" class="btn btn-tool" data-card-widget="collapse">
+									<i class="fas fa-minus"></i>
+								</button>
+							</div>
+						</div>
+						<partial name = "~/Views/Contact/AdminContactSideBar.cshtml" />
+						<!-- /.card-body -->
+					</div>
+				</div>
+				<!-- /.col -->
+				<div class="col-md-9">
+					<div class="card card-primary card-outline">
+						<div class="card-header">
+							<h3 class="card-title">Mesaj Detayları</h3>
+							<div class="card-tools">
+								<a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
+								<a href="#" class="btn btn-tool" data-toggle="tooltip" title="Next"><i class="fas fa-chevron-right"></i></a>
+							</div>
+						</div>
+						<!-- /.card-header -->
+						<div class="card-body p-0">
+							<div class="mailbox-read-info">
+								<h5>@Model.Subject</h5>
+								<h6>
+									Kimden: @Model.Mail
+									<span class="mailbox-read-time float-right">@Model.MessageDate.ToShortDateString() - @Model.MessageDate.ToShortTimeString()</span>
+								</h6>
+							</div>
+							<!-- /.mailbox-read-info -->
+							<div class="mailbox-controls with-border text-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
+										<i class="far fa-trash-alt"></i>
+									</button>
+									<button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
+										<i class="fas fa-reply"></i>
+									</button>
+									<button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Forward">
+										<i class="fas fa-share"></i>
+									</button>
+								</div>
+								<!-- /.btn-group -->
+								<button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Print">
+									<i class="fas fa-print"></i>
+								</button>
+							</div>
+							<!-- /.mailbox-controls -->
+							<div class="mailbox-read-message">
+								<p>@Model.Message</p>
+							</div>
+							<!-- /.mailbox-read-message -->
+						</div>
+						<!-- /.card-body -->
+						<div class="card-footer">
+							<div class="float-right">
+								<button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Yanıtla</button>
+								<button type="button" class="btn btn-default"><i class="fas fa-share"></i> İlet</button>
+							</div>
+							<button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Sil</button>
+							<button type="button" class="btn btn-default"><i class="fas fa-print"></i> Yazdır</button>
+						</div>
+						<!-- /.card-footer -->
+					</div>
+					<!-- /.card -->
+				</div>
+				<!-- /.col -->
+			</div>
+			<!-- /.row -->
+		</div>
+	</section>
+</body>
+</html>

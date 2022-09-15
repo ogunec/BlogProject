@@ -1,0 +1,23 @@
+﻿<div class="sidebar-box">
+	<h3 class="heading">Popüler Yazıları</h3>
+	<div class="post-entry-sidebar">
+		<ul>
+			@foreach (Blog item in @Model)
+			{
+				<li>
+				<a asp-action="BlogDetails" asp-controller="Blog" asp-route-id="@item.BlogID">
+					<img src="@item.BlogImage" alt="Image placeholder" class="mr-4">
+					<div class="text">
+						<h4>@item.BlogTitle</h4>
+						<div class="post-meta">
+							<span class="mr-2">@item.BlogDate.ToString("dd/MM/yyyy HH:MM")</span>
+						</div>
+					</div>
+				</a>
+			</li>
+			}
+			
+		</ul>
+	</div>
+</div>
+

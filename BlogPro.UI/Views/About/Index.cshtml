@@ -1,0 +1,47 @@
+﻿@model (IEnumerable<Author>, IEnumerable<About>)
+<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('/images/hakkimizda.jpg');">
+	<div class="container">
+		<div class="row same-height justify-content-center">
+			<div class="col-md-12 col-lg-10">
+				<div class="post-entry text-center">
+					<h1 class="">Hakkımızda</h1>
+					<p class="lead mb-4 text-white">Bu sayfada bizim hakkımızda detaylı bilgiye ulaşabilirsiniz</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="site-section bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 order-md-2">
+				<img src="@Model.Item2.FirstOrDefault().AboutImage1" alt="Image" class="img-fluid">
+			</div>
+			<div class="col-md-5 mr-auto order-md-1">
+				<h2>Misyonumuz</h2>
+				<p>@Model.Item2.FirstOrDefault().AboutContent1</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<partial name="~/Views/About/MeetTheTeam.cshtml" model="@Model.Item1" />
+
+<div class="site-section bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<img src="@Model.Item2.FirstOrDefault().AboutImage2" alt="Image" class="img-fluid">
+			</div>
+			<div class="col-md-5 ml-auto">
+				<h2>Vizyonumuz</h2>
+				<p class="mb-4">@Model.Item2.FirstOrDefault().AboutContent2</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div>
+	<partial name="~/Views/SubscribeMail/AddMail.cshtml" />
+</div>
+

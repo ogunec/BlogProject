@@ -1,0 +1,27 @@
+﻿<div class="site-section">
+	<div class="container">
+		<div class="row mb-5 justify-content-center">
+			<div class="col-md-5 text-center">
+				<h2>Ekibimizi Tanıyalım</h2>
+				<p>Bu bölümde blog ekibimizi tanıyabilir ve sosyal medya hesaplarını takip edebilirsiniz. </p>
+			</div>
+		</div>
+		<div class="row">
+			@foreach (Author item in @Model)
+			{
+				<div class="col-md-6 col-lg-4 mb-5 text-center">
+					<img src="@item.AuthorImage" alt="Image" class="img-fluid w-50 rounded-circle mb-4">
+					<h2 class="mb-3 h5">@item.AuthorName</h2>
+					<p>@item.AuthorDetail</p>
+
+					<p class="mt-5">
+						<a href="#" class="p-3"><span class="icon-facebook"></span></a>
+						<a href="#" class="p-3"><span class="icon-instagram"></span></a>
+						<a href="#" class="p-3"><span class="icon-twitter"></span></a>
+					</p>
+				</div>
+			}
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,28 @@
+﻿@model BlogPro.MODEL.Entities.Blog
+@{
+	ViewData["Title"] = "AddNewBlog";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h3>Yeni Blog Ekleme Sayfası</h3>
+
+<form method="post" class="form-group">
+	<label class="form-label" asp-for="BlogTitle">Başlık</label>
+	<input type="text" class="form-control" asp-for="BlogTitle" />
+	<br />
+	<label asp-for="@Model.CategoryID" class="control-label">Kategori</label>
+	<select asp-for="@Model.CategoryID" class="form-control" asp-items="@(new SelectList(ViewBag.CategoryList,"CategoryID","CategoryName"))"></select>
+	<br />
+	<label class="form-label" asp-for="BlogImage">Resim</label>
+	<input type="text" class="form-control" asp-for="BlogImage" />
+	<br />
+	<label class="form-label" asp-for="BlogDate">Tarih</label>
+	<input type="datetime-local" class="form-control" asp-for="BlogDate" />
+	<br />
+	<label asp-for="@Model.AuthorID" class="control-label">Yazar</label>
+	<select asp-for="@Model.AuthorID" class="form-control" asp-items="@(new SelectList(ViewBag.AuthorList,"AuthorID","AuthorName"))"></select>
+	<br />
+	<label class="form-label" asp-for="BlogContent">İçerik</label>
+	<textarea class="form-control" asp-for="BlogContent" rows="10" cols="20"></textarea>
+	<br />
+	<input type="submit" asp-action="AddNewBlog" asp-controller="Admin" value="Kaydet" class="btn btn-info">
+</form>

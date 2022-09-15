@@ -1,0 +1,94 @@
+﻿@model Author
+@{
+	Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<h1>Profil Bilgileri</h1>
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+	<div class="tab-pane" id="settings">
+		<div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+			<div class="card bg-light">
+				<div class="card-header text-muted border-bottom-0">
+					@Model.AuthorTitle
+				</div>
+				<div class="card-body pt-0">
+					<div class="row">
+						<div class="col-7">
+							<h2 class="lead"><b>@Model.AuthorName</b></h2>
+							<p class="text-muted text-sm"><b>About: </b> @Model.AboutShort </p>
+							<ul class="ml-4 mb-0 fa-ul text-muted">
+								<li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> E-Mail: @Model.AuthorMail</li>
+								<li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: @Model.PhoneNumber</li>
+							</ul>
+						</div>
+						<div class="col-5 text-center">
+							<img src="@Model.AuthorImage" alt="" class="img-circle img-fluid">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<form method="post" class="form-horizontal">
+			<div class="form-group row">
+				<label for="inputName" class="col-sm-2 col-form-label">Ad Soyad</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputName" asp-for="AuthorName">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="inputEmail" class="col-sm-2 col-form-label">Mail</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control" id="inputEmail" asp-for="AuthorMail">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="inputName2" class="col-sm-2 col-form-label">Görevi</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputName2" asp-for="AuthorTitle">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="inputName2" class="col-sm-2 col-form-label">Yetenekler</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputName2" asp-for="AboutShort">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="inputName2" class="col-sm-2 col-form-label">Telefon</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputName2" asp-for="PhoneNumber">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="inputName2" class="col-sm-2 col-form-label">Fotoğraf</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputName2" asp-for="AuthorImage">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="inputName2" class="col-sm-2 col-form-label">Şifre</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="inputName2" asp-for="Password">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="inputExperience" class="col-sm-2 col-form-label">Hakkında</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" id="inputExperience" asp-for="AuthorDetail"></textarea>
+				</div>
+			</div>
+			<input asp-for="AuthorID" type="hidden" />
+			<input asp-for="Role" type="hidden" />
+			<div class="form-group row">
+				<div class="offset-sm-2 col-sm-10">
+					<button type="submit" asp-action="UserUpdate" asp-controller="User" class="btn btn-info">Güncelle</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

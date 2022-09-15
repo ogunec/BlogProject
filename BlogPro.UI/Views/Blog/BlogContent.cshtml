@@ -1,0 +1,16 @@
+﻿@using BlogPro.MODEL.Entities
+@using System.Collections.Generic
+@model List<Blog>
+
+<div class="post-content-body">
+	<p>@Model.FirstOrDefault().BlogContent</p>
+	<div class="row mb-5 mt-5">
+		<div class="col-md-12 mb-4">
+			<img src="@Model.FirstOrDefault().BlogImage" alt="Image placeholder" class="img-fluid rounded">
+		</div>
+	</div>
+</div>
+
+
+
+
